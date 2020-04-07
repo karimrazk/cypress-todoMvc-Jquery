@@ -10,19 +10,6 @@ describe("Items list tests", () => {
     cy.visit("/");
   });
 
-  context("Adding items test", () => {
-    it("Check if 3 items are added !", () => {
-      cy.fill(myItemOne,myItemTwo,myItemThree);
-
-      cy.get(".todo-list li")
-        .should("have.length", 3)
-        .and("contain", myItemOne)
-        .and("contain", myItemTwo)
-        .and("contain", myItemThree)
-        .find(".toggle")
-        .should("not.be.checked");
-    });
-  });
 
   context("Remove items tests", () => {
     it("Should remove DelItem 1", () => {
