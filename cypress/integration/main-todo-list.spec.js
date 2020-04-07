@@ -1,6 +1,4 @@
 const myItemOne = "MyItem 1";
-const myItemTwo = "MyItem 2";
-const myItemThree = "MyItem 3";
 const removeOne = "DelItem 1";
 const removeTwo = "DelItem 2";
 const updateText = "First Item";
