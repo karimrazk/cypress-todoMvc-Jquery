@@ -1,4 +1,4 @@
-describe("add new todo test", () => {
+describe("test the input for adding todos", () => {
 
     beforeEach(() => {
         cy.visit("/");
@@ -16,7 +16,7 @@ describe("add new todo test", () => {
             .should("not.be.checked");
     });
 
-    it("Should toggle all items ", () => {
+    it("Should toggle all todods ", () => {
 
         cy.fill("learn js ", "learn ecma");
         cy.get("label").contains("Mark all as complete").click();
