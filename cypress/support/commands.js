@@ -1,5 +1,4 @@
 Cypress.Commands.add("addListItems", () => {
-  cy.visit("/");
   cy.get(".new-todo").type("item 1  {enter}").should("have.value", "");
   cy.get(".new-todo").type("item 2  {enter}").should("have.value", "");
   cy.get(".new-todo").type("item 3  {enter}").should("have.value", "");
