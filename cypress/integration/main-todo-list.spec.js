@@ -12,9 +12,7 @@ describe("Items list tests", () => {
 
   context("Adding items test", () => {
     it("Check if 3 items are added !", () => {
-      cy.get(".new-todo").type(myItemOne + "{enter}");
-      cy.get(".new-todo").type(myItemTwo + "{enter}");
-      cy.get(".new-todo").type(myItemThree + "{enter}");
+      cy.fill(myItemOne,myItemTwo,myItemThree);
 
       cy.get(".todo-list li")
         .should("have.length", 3)
@@ -28,8 +26,7 @@ describe("Items list tests", () => {
 
   context("Remove items tests", () => {
     it("Should remove DelItem 1", () => {
-      cy.get(".new-todo").type(removeOne + "{enter}");
-      cy.get(".new-todo").type(removeTwo + "{enter}");
+      cy.fill(removeOne,removeTwo);
 
       cy.contains(".todo-list li", removeOne)
         .find(".destroy")
@@ -42,7 +39,7 @@ describe("Items list tests", () => {
     });
 
     it("Should remove item when it's an empty text ", () => {
-      cy.get(".new-todo").type(removeTwo + "{enter}");
+      cy.fill(removeTwo);
 
       cy.contains(".todo-list li", removeTwo)
         .find(".edit")
@@ -53,8 +50,8 @@ describe("Items list tests", () => {
     });
 
     it("Should remove all items !", () => {
-      cy.get(".new-todo").type(removeOne + "{enter}");
-      cy.get(".new-todo").type(removeTwo + "{enter}");
+
+      cy.fill(removeOne,removeTwo);
 
       cy.get(".todo-list li").each(function () {
         cy.get(".destroy")
@@ -65,9 +62,11 @@ describe("Items list tests", () => {
     });
   });
 
+  //other tests
   context("Update item test", () => {
     it("Should update MyItem 1 to First Item ", () => {
-      cy.get(".new-todo").type(myItemOne + "{enter}");
+      cy.fill(myItemOne);
+      
       cy.contains(".todo-list li", myItemOne)
         .find(".edit")
         .invoke("show")
@@ -78,13 +77,4 @@ describe("Items list tests", () => {
     });
   });
 
-  context("Completed items test", () => {
-    it("Should assigne MyItem 1 to Completed category", () => {
-      cy.get(".new-todo").type(myItemOne + "{enter}");
-
-      cy.contains(".todo-list li", myItemOne).find(".toggle").check();
-      cy.get(".todo-list li").filter(".completed").should("have.length", 1);
-      cy.contains(".todo-list li", myItemOne).should("have.class", "completed");
-    });
-  });
 });

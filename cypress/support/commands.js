@@ -7,3 +7,10 @@ Cypress.Commands.add("addListItems", () => {
   cy.contains(".todo-list li", "item 2").find(".toggle").check();
   cy.contains(".todo-list li", "item 4").find(".toggle").check();
 });
+
+
+Cypress.Commands.add('fill', (...label) => {
+  label.forEach(element => {
+      cy.get(".new-todo").type(element + "{enter}");
+  });
+ })
